@@ -94,42 +94,47 @@
     </div>
 
     <script>
-        // Ensure script runs only after the page has fully loaded
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("page1").style.display = "block";
+    document.addEventListener("DOMContentLoaded", function () {
+        // Hide all pages first
+        document.querySelectorAll('.page').forEach(page => {
+            page.style.display = "none";
         });
 
-        // Function to navigate between pages
-        function goToPage(currentPage, nextPage, correctValue, inputId) {
-            const userInput = document.getElementById(inputId).value.toLowerCase();
-            if (userInput === correctValue) {
-                document.getElementById(currentPage).style.display = "none";
-                document.getElementById(nextPage).style.display = "block";
-            } else {
-                alert("Wrong answer! Try again.");
-            }
-        }
+        // Show only Page 1
+        document.getElementById("page1").style.display = "block";
+    });
 
-        function checkPasscode() {
-            goToPage("page1", "page2", "140266", "passcode");
+    function goToPage(currentPage, nextPage, correctValue, inputId) {
+        const userInput = document.getElementById(inputId).value.toLowerCase();
+        if (userInput === correctValue) {
+            document.getElementById(currentPage).style.display = "none";
+            document.getElementById(nextPage).style.display = "block";
+        } else {
+            alert("Wrong answer! Try again.");
         }
+    }
 
-        function checkLocation() {
-            goToPage("page2", "page3", "osaka", "location");
-        }
+    function checkPasscode() {
+        goToPage("page1", "page2", "140266", "passcode");
+    }
 
-        function checkSwitch() {
-            goToPage("page3", "page4", "587313", "switchPasscode");
-        }
+    function checkLocation() {
+        goToPage("page2", "page3", "osaka", "location");
+    }
 
-        function checkBrotherCode() {
-            goToPage("page4", "page5", "246810", "brotherCode");
-        }
+    function checkSwitch() {
+        goToPage("page3", "page4", "587313", "switchPasscode");
+    }
 
-        function checkFinalPasscode() {
-            goToPage("page5", "congratulations", "888888", "finalPasscode");
-        }
-    </script>
+    function checkBrotherCode() {
+        goToPage("page4", "page5", "246810", "brotherCode");
+    }
+
+    function checkFinalPasscode() {
+        goToPage("page5", "congratulations", "888888", "finalPasscode");
+    }
+</script>
+
 
 </body>
 </html>
