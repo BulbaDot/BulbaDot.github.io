@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treasure Hunt Game</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        .page { display: none; }
-        .container { margin-top: 50px; }
+        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
+        .page { display: none; width: 100vw; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         input { width: 200px; font-size: 16px; padding: 10px; margin: 10px; }
         button { padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
         button:hover { background-color: #45a049; }
@@ -16,16 +15,17 @@
 </head>
 <body>
 
-    <!-- Page 1: The First Clue (Netflix and Passcode) -->
-    <div id="page1" class="page">
-        <h2>What does Mama use to watch Netflix?</h2>
+    <!-- Page 1: Bright and Cheerful (Pastel Yellow) -->
+    <div id="page1" class="page" style="background-color: #FFEE99;">
+        <h1>Go find the first clue!</h1>
+        <h2>What objext does Mama use to watch Netflix?</h2>
         <input type="text" id="passcode" placeholder="Enter passcode (6 digits)" maxlength="6" />
         <br><br>
         <button onclick="checkPasscode()">Submit</button>
     </div>
 
-    <!-- Page 2: The Osaka Clue (Image and Answer) -->
-    <div id="page2" class="page">
+    <!-- Page 2: A Bit More Challenging (Pastel Blue) -->
+    <div id="page2" class="page" style="background-color: #AEEEEE;">
         <h2>Where is this image taken?</h2>
         <img src="osaka.jpg" alt="Osaka Image">
         <br><br>
@@ -33,32 +33,32 @@
         <button onclick="checkLocation()">Submit</button>
     </div>
 
-    <!-- Page 3: The Switch Clue (Passcode Box) -->
-    <div id="page3" class="page">
+    <!-- Page 3: More Intense (Pastel Orange with a Hint of Red) -->
+    <div id="page3" class="page" style="background-color: #FFB266;">
         <h2>Next clue: "Switch"</h2>
         <input type="text" id="switchPasscode" placeholder="Enter passcode here" maxlength="6" />
         <br><br>
         <button onclick="checkSwitch()">Submit</button>
     </div>
 
-    <!-- Page 4: Text Your Brother (Password Challenge) -->
-    <div id="page4" class="page">
+    <!-- Page 4: Mystery is Growing (Deep Purple with Warm Tones) -->
+    <div id="page4" class="page" style="background-color: #BA55D3;">
         <h2>Next clue: Text your brother 13579</h2>
         <input type="text" id="brotherCode" placeholder="Enter passcode here" maxlength="6" />
         <br><br>
         <button onclick="checkBrotherCode()">Submit</button>
     </div>
 
-    <!-- Page 5: The Huge Bear (Final Passcode) -->
-    <div id="page5" class="page">
+    <!-- Page 5: Mysterious, Final Challenge (Dark Navy with a Magical Glow) -->
+    <div id="page5" class="page" style="background-color: #2F4F4F; color: white;">
         <h2>Last clue: Under the huge bear.</h2>
         <input type="text" id="finalPasscode" placeholder="Enter passcode here" maxlength="6" />
         <br><br>
         <button onclick="checkFinalPasscode()">Submit</button>
     </div>
 
-    <!-- Final Page: Congratulations -->
-    <div id="congratulations" class="page">
+    <!-- Final Page: Bright Magical Surprise (Shining Golden Glow) -->
+    <div id="congratulations" class="page" style="background-color: #FFD700;">
         <h1>Congratulations! You've completed the Treasure Hunt!</h1>
     </div>
 
@@ -69,7 +69,7 @@
         // Functions to check the passcode and navigate through the game
         function checkPasscode() {
             const passcode = document.getElementById("passcode").value;
-            if (passcode === "123456") {  // Correct passcode
+            if (passcode === "140266") {  // Correct passcode
                 document.getElementById("page1").style.display = "none";
                 document.getElementById("page2").style.display = "block";  // Show next page
             } else {
@@ -89,7 +89,7 @@
 
         function checkSwitch() {
             const passcode = document.getElementById("switchPasscode").value;
-            if (passcode === "654321") {  // Correct passcode for switch
+            if (passcode === "587313") {  // Correct passcode for switch
                 document.getElementById("page3").style.display = "none";
                 document.getElementById("page4").style.display = "block";  // Show next page
             } else {
@@ -109,7 +109,7 @@
 
         function checkFinalPasscode() {
             const passcode = document.getElementById("finalPasscode").value;
-            if (passcode === "999999") {
+            if (passcode === "888888") {
                 document.getElementById("page5").style.display = "none";
                 document.getElementById("congratulations").style.display = "block";  // Show congratulations
             } else {
