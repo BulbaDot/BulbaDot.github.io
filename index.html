@@ -52,7 +52,7 @@
     <!-- Page 2: A Bit More Challenging (Pastel Blue) -->
     <div id="page2" class="page" style="background-color: #AEEEEE;">
         <h2>Where is this image taken?</h2>
-        <img src="IMG_6875.jpeg" alt="no Image">
+        <img src="IMG_3225.jpeg" alt="no Image">
         <br><br>
         <input type="text" id="location" placeholder="Type your answer here" />
         <button onclick="checkLocation()">Submit</button>
@@ -85,6 +85,7 @@
     <!-- Final Page: Bright Magical Surprise (Shining Golden Glow) -->
     <div id="congratulations" class="page" style="background-color: #FFD700;">
         <h1>Congratulations! You've completed the Treasure Hunt!</h1>
+        <h2>I love you and will you be my valentine?</h2>
     </div>
 
     <script>
@@ -104,7 +105,7 @@
 
         function checkLocation() {
             const location = document.getElementById("location").value.toLowerCase();
-            if (location === "yy") {
+            if (location === "osaka") {
                 document.getElementById("page2").style.display = "none";
                 document.getElementById("page3").style.display = "block";  // Show next page
             } else {
