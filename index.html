@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .page { display: none; }
+        .container { margin-top: 50px; }
+        input { width: 200px; font-size: 16px; padding: 10px; margin: 10px; }
+        button { padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        img { width: 50%; max-width: 600px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: The First Clue (Netflix and Passcode) -->
+    <div id="page1" class="page">
+        <h2>What does Mama use to watch Netflix?</h2>
+        <input type="text" id="passcode" placeholder="Enter passcode (6 digits)" maxlength="6" />
+        <br><br>
+        <button onclick="checkPasscode()">Submit</button>
+    </div>
+
+    <!-- Page 2: The Osaka Clue (Image and Answer) -->
+    <div id="page2" class="page">
+        <h2>Where is this image taken?</h2>
+        <img src="osaka.jpg" alt="Osaka Image">
+        <br><br>
+        <input type="text" id="location" placeholder="Type your answer here" />
+        <button onclick="checkLocation()">Submit</button>
+    </div>
+
+    <!-- Page 3: The Switch Clue (Passcode Box) -->
+    <div id="page3" class="page">
+        <h2>Next clue: "Switch"</h2>
+        <input type="text" id="switchPasscode" placeholder="Enter passcode here" maxlength="6" />
+        <br><br>
+        <button onclick="checkSwitch()">Submit</button>
+    </div>
+
+    <!-- Page 4: Text Your Brother (Password Challenge) -->
+    <div id="page4" class="page">
+        <h2>Next clue: Text your brother 13579</h2>
+        <input type="text" id="brotherCode" placeholder="Enter passcode here" maxlength="6" />
+        <br><br>
+        <button onclick="checkBrotherCode()">Submit</button>
+    </div>
+
+    <!-- Page 5: The Huge Bear (Final Passcode) -->
+    <div id="page5" class="page">
+        <h2>Last clue: Under the huge bear.</h2>
+        <input type="text" id="finalPasscode" placeholder="Enter passcode here" maxlength="6" />
+        <br><br>
+        <button onclick="checkFinalPasscode()">Submit</button>
+    </div>
+
+    <!-- Final Page: Congratulations -->
+    <div id="congratulations" class="page">
+        <h1>Congratulations! You've completed the Treasure Hunt!</h1>
+    </div>
+
+    <script>
+        // Show the first page when the game starts
+        document.getElementById("page1").style.display = "block";
+
+        // Functions to check the passcode and navigate through the game
+        function checkPasscode() {
+            const passcode = document.getElementById("passcode").value;
+            if (passcode === "123456") {  // Correct passcode
+                document.getElementById("page1").style.display = "none";
+                document.getElementById("page2").style.display = "block";  // Show next page
+            } else {
+                alert("Wrong passcode! Try again.");
+            }
+        }
+
+        function checkLocation() {
+            const location = document.getElementById("location").value.toLowerCase();
+            if (location === "osaka") {
+                document.getElementById("page2").style.display = "none";
+                document.getElementById("page3").style.display = "block";  // Show next page
+            } else {
+                alert("Wrong answer! Try again.");
+            }
+        }
+
+        function checkSwitch() {
+            const passcode = document.getElementById("switchPasscode").value;
+            if (passcode === "654321") {  // Correct passcode for switch
+                document.getElementById("page3").style.display = "none";
+                document.getElementById("page4").style.display = "block";  // Show next page
+            } else {
+                alert("Wrong passcode! Try again.");
+            }
+        }
+
+        function checkBrotherCode() {
+            const passcode = document.getElementById("brotherCode").value;
+            if (passcode === "246810") {
+                document.getElementById("page4").style.display = "none";
+                document.getElementById("page5").style.display = "block";  // Show next page
+            } else {
+                alert("Wrong passcode! Try again.");
+            }
+        }
+
+        function checkFinalPasscode() {
+            const passcode = document.getElementById("finalPasscode").value;
+            if (passcode === "999999") {
+                document.getElementById("page5").style.display = "none";
+                document.getElementById("congratulations").style.display = "block";  // Show congratulations
+            } else {
+                alert("Wrong passcode! Try again.");
+            }
+        }
+    </script>
+
+</body>
+</html>
