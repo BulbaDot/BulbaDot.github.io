@@ -35,6 +35,11 @@
         button { padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
         button:hover { background-color: #45a049; }
         img { width: 50%; max-width: 600px; margin-top: 20px; }
+
+        /* Ensure congratulations page is hidden initially */
+        #congratulations {
+            display: none;
+        }
     </style>
 </head>
 
@@ -43,7 +48,7 @@
     <!-- Page 1: Bright and Cheerful (Pastel Yellow) -->
     <div id="page1" class="page" style="background-color: #FFEE99;">
         <h1>Go find the first clue!</h1>
-        <h2>What objext does Mama use to watch Netflix?</h2>
+        <h2>What object does Mama use to watch Netflix?</h2>
         <input type="text" id="passcode" placeholder="Enter passcode (6 digits)" maxlength="6" />
         <br><br>
         <button onclick="checkPasscode()">Submit</button>
@@ -89,58 +94,40 @@
     </div>
 
     <script>
-        // Show the first page when the game starts
-        document.getElementById("page1").style.display = "block";
+        // Ensure script runs only after the page has fully loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("page1").style.display = "block";
+        });
 
-        // Functions to check the passcode and navigate through the game
-        function checkPasscode() {
-            const passcode = document.getElementById("passcode").value;
-            if (passcode === "140266") {  // Correct passcode
-                document.getElementById("page1").style.display = "none";
-                document.getElementById("page2").style.display = "block";  // Show next page
-            } else {
-                alert("Wrong passcode! Try again.");
-            }
-        }
-
-        function checkLocation() {
-            const location = document.getElementById("location").value.toLowerCase();
-            if (location === "osaka") {
-                document.getElementById("page2").style.display = "none";
-                document.getElementById("page3").style.display = "block";  // Show next page
+        // Function to navigate between pages
+        function goToPage(currentPage, nextPage, correctValue, inputId) {
+            const userInput = document.getElementById(inputId).value.toLowerCase();
+            if (userInput === correctValue) {
+                document.getElementById(currentPage).style.display = "none";
+                document.getElementById(nextPage).style.display = "block";
             } else {
                 alert("Wrong answer! Try again.");
             }
         }
 
+        function checkPasscode() {
+            goToPage("page1", "page2", "140266", "passcode");
+        }
+
+        function checkLocation() {
+            goToPage("page2", "page3", "osaka", "location");
+        }
+
         function checkSwitch() {
-            const passcode = document.getElementById("switchPasscode").value;
-            if (passcode === "587313") {  // Correct passcode for switch
-                document.getElementById("page3").style.display = "none";
-                document.getElementById("page4").style.display = "block";  // Show next page
-            } else {
-                alert("Wrong passcode! Try again.");
-            }
+            goToPage("page3", "page4", "587313", "switchPasscode");
         }
 
         function checkBrotherCode() {
-            const passcode = document.getElementById("brotherCode").value;
-            if (passcode === "246810") {
-                document.getElementById("page4").style.display = "none";
-                document.getElementById("page5").style.display = "block";  // Show next page
-            } else {
-                alert("Wrong passcode! Try again.");
-            }
+            goToPage("page4", "page5", "246810", "brotherCode");
         }
 
         function checkFinalPasscode() {
-            const passcode = document.getElementById("finalPasscode").value;
-            if (passcode === "888888") {
-                document.getElementById("page5").style.display = "none";
-                document.getElementById("congratulations").style.display = "block";  // Show congratulations
-            } else {
-                alert("Wrong passcode! Try again.");
-            }
+            goToPage("page5", "congratulations", "888888", "finalPasscode");
         }
     </script>
 
