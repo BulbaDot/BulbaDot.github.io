@@ -5,14 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treasure Hunt Game</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
-        .page { display: none; width: 100vw; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        /* Prevent scrolling */
+        html, body {
+            overflow: hidden;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+        }
+
+        .page { 
+            display: none; 
+            width: 100vw; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            position: absolute;
+            top: 0; 
+            left: 0; 
+        }
+
         input { width: 200px; font-size: 16px; padding: 10px; margin: 10px; }
         button { padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
         button:hover { background-color: #45a049; }
         img { width: 50%; max-width: 600px; margin-top: 20px; }
     </style>
 </head>
+
 <body>
 
     <!-- Page 1: Bright and Cheerful (Pastel Yellow) -->
@@ -27,7 +52,7 @@
     <!-- Page 2: A Bit More Challenging (Pastel Blue) -->
     <div id="page2" class="page" style="background-color: #AEEEEE;">
         <h2>Where is this image taken?</h2>
-        <img src="osaka.jpg" alt="Osaka Image">
+        <img src="IMG_6875.jpeg" alt="no Image">
         <br><br>
         <input type="text" id="location" placeholder="Type your answer here" />
         <button onclick="checkLocation()">Submit</button>
@@ -79,7 +104,7 @@
 
         function checkLocation() {
             const location = document.getElementById("location").value.toLowerCase();
-            if (location === "osaka") {
+            if (location === "yy") {
                 document.getElementById("page2").style.display = "none";
                 document.getElementById("page3").style.display = "block";  // Show next page
             } else {
