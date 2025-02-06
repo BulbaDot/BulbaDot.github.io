@@ -25,7 +25,8 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            justify-content: center; 
+            justify-content: flex-start; 
+            padding-top: 20%;
             position: absolute;
             top: 0; 
             left: 0; 
@@ -36,7 +37,7 @@
         button:hover { background-color: #45a049; }
         img { width: 50%; max-width: 600px; margin-top: 20px; }
 
-        /* Ensure congratulations page is hidden initially */
+        /* Ensure final page is hidden initially */
         #congratulations {
             display: none;
         }
@@ -57,7 +58,7 @@
     <!-- Page 2: A Bit More Challenging (Pastel Blue) -->
     <div id="page2" class="page" style="background-color: #AEEEEE;">
         <h2>Where is this image taken?</h2>
-        <img src="IMG_3225.jpeg" alt="no Image">
+        <img src="IMG_3225.jpeg" alt="No Image">
         <br><br>
         <input type="text" id="location" placeholder="Type your answer here" />
         <button onclick="checkLocation()">Submit</button>
@@ -100,7 +101,7 @@
             page.style.display = "none";
         });
 
-        // Show only Page 1
+        // Show only Page 1 initially
         document.getElementById("page1").style.display = "block";
     });
 
@@ -109,6 +110,9 @@
         if (userInput === correctValue) {
             document.getElementById(currentPage).style.display = "none";
             document.getElementById(nextPage).style.display = "block";
+
+            // Scroll to top to ensure visibility
+            window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
             alert("Wrong answer! Try again.");
         }
@@ -131,10 +135,19 @@
     }
 
     function checkFinalPasscode() {
-        goToPage("page5", "congratulations", "888888", "finalPasscode");
-    }
-</script>
+        const userInput = document.getElementById("finalPasscode").value.toLowerCase();
+        if (userInput === "888888") {
+            // Move the congratulations page to Page 1
+            document.getElementById("congratulations").style.display = "block";
+            document.getElementById("page5").style.display = "none";
 
+            // Scroll user back to the first page
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+            alert("Wrong answer! Try again.");
+        }
+    }
+    </script>
 
 </body>
 </html>
